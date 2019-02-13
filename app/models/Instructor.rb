@@ -1,7 +1,7 @@
 class Instructor
 
   attr_reader :full_name
-  attr_accessor :level
+  # attr_accessor :level
 
   @@all = []
 
@@ -15,21 +15,25 @@ class Instructor
     @@all
   end
 
- def upgrade_level(student, level)
+ def change_level(student, level)
+    student.level = level
+    # i have the student instance
+    # i have the level
 
-   # Appointment.all
+    # This method should allow an instructor to
+    # change the level of a student
 
+    # I need to...
+    # get the level of the student instance
+    # (level instqnce method)
+    # i need to change that students
+    # level to the level passed in as an argument
  end
 
  def view_my_appointments
-   appt = []
-   Appointment.all.each do |appointment|
-      if self.full_name == appointment.instructor.full_name
-            appt << appointment              #binding.pry
+   Appointment.all.select do |appointment|
+       self == appointment.instructor
+        #binding.pry
       end
    end
-           appt
  end
-
-
-end

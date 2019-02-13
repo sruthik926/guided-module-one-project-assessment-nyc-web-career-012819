@@ -1,14 +1,14 @@
 
 class Student
 
-  attr_reader :full_name, :level
+  attr_reader :full_name
+  attr_accessor :level
 
    @@all = []
 
   def initialize(full_name)
       @full_name = full_name
       @level = 1
-      @status = 'A'
       @@all << self
   end
 
@@ -18,27 +18,22 @@ class Student
 
   def view_instructors
     Instructor.all
-    binding.pry
-  end
+ end
 
 
  def create_appointment(instructor, subject, date_time)
    Appointment.new(self, instructor, subject, date_time)
-  end
+ end
 
  def cancel_appointment(appointment)
    appointment.status = 'C'
  end
 
  def view_my_appointments
-   appt = []
-   Appointment.all.each do |appointment|
-      if self.full_name == appointment.student.full_name
-            appt << appointment              #binding.pry
-      end
+   Appointment.all.select do |appointment|
+       self == appointment.student
    end
-           appt
-end
+ end
   #     Instructor.all. do |instructor|
   #       if full_name == instructor.student.full_name
   #

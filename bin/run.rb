@@ -6,19 +6,35 @@
 require_relative '../app/models/Appointment'
 require_relative '../app/models/Instructor'
 require_relative '../app/models/Student'
-require_relative 'seed.rb'
+
 require 'pry'
 #
-# # puts 'welcome to my cli'
-#
-# # Appt.new , Inst.new, Stud.new
-# # have at lest 3-5 test cases for each instance
-# # at least 1 - 2 test cases for each method
-#
+student1 = Student.new("Sruthi Krishna")
+student2 = Student.new("Krishna Seshadri")
+student3 = Student.new("Adam John")
+student4 = Student.new("Alex G")
+
+instructor1 = Instructor.new("Ani Krishna", "vocal")
+instructor2 = Instructor.new("Annete N", "Math")
+instructor3 = Instructor.new("John S", "Comp Science")
+
+puts 'welcome!'
+
+puts 'are you an instructor or student?'
+response = gets.chomp
+if response == 'i'
+  puts 'hello instructor!'
+else response == 's'
+  puts 'hello student!'
+end
+
 #
 
-Pry.start
-0
+
+ Appointment.all.each do |appt|
+  puts "appt title: #{appt.title}"
+   binding.pry
+end
 
 # require_relative '../config/environment.rb'
 #
